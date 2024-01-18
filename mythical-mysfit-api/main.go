@@ -5,6 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"log"
 	"mythical-mysfit-api/initializers"
+	"mythical-mysfit-api/middlewares"
 	"mythical-mysfit-api/models"
 	"os"
 )
@@ -20,6 +21,8 @@ func init() {
 
 func main() {
 	r := gin.Default()
+	// initialize middlewares
+	r.Use(middlewares.CORSMiddleware())
 
 	r.GET("/", func(c *gin.Context) {
 		c.JSON(200, gin.H{

@@ -85,3 +85,7 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# environment
+.env
+docker-compose.override.yaml

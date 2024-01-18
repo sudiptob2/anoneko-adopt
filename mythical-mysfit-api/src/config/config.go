@@ -1,9 +1,13 @@
-package initializers
+package config
 
 import (
 	"github.com/joho/godotenv"
 	"log"
 )
+
+func Init() {
+	LoadEnvVars()
+}
 
 func LoadEnvVars() {
 	// Load the .env file

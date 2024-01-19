@@ -1,4 +1,4 @@
-module mythical-mysfit-api
+module anoneko-adopt-api
 
 go 1.21
 

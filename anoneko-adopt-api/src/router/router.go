@@ -2,7 +2,7 @@ package router
 
 import (
 	"github.com/gin-gonic/gin"
-	"mythical-mysfit-api/src/api/controllers"
+	"anoneko-adopt-api/src/api/controllers"
 )
 
 func Init() {
@@ -20,7 +20,7 @@ func NewRouter() *gin.Engine {
 	// resource.Use(middleware1, middleware2, ...)
 
 	// Define the routes in the group
-	resource.GET("/mysfits", controllers.GetMysFits)
+	resource.GET("/pets", controllers.GetMysFits)
 
 	return router
 }

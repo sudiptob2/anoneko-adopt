@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"github.com/gin-gonic/gin"
 	"log"
-	"mythical-mysfit-api/src/api/models"
+	"anoneko-adopt-api/src/api/models"
 	"os"
 )
 

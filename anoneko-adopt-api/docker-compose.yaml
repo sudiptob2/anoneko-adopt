@@ -1,5 +1,5 @@
-version: '3.8'
-name: mythical-mysfits-api
+version: "3.8"
+name: anoneko-adopt-api
 services:
   api:
     container_name: api

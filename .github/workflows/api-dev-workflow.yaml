@@ -3,8 +3,8 @@ name: API dev
 on:
   push:
     branches: [ "develop" ]
-#    paths:
-#      - 'anoneko-adopt-api/**'
+    paths:
+      - 'anoneko-adopt-api/**'
 
 env:
   IMAGE_NAME: ${{ github.repository }}

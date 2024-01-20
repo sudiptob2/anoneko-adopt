@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: anoneko-adopt-api
+  labels:
+    app: anoneko-adopt-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: anoneko-adopt-api
+  template:
+    metadata:
+      labels:
+        app: anoneko-adopt-api
+    spec:
+      containers:
+        - name: anoneko-adopt-api
+          image: sudiptob2/anoneko-adopt:develop
+          ports:
+            - containerPort: 8080

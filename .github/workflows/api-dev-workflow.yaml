@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Create .env file
-        run: cp .env.example .env
+        run: cp anoneko-adopt-api/.env.example anoneko-adopt-api/.env
 
       - name: Setup Docker buildx
         uses: docker/setup-buildx-action@v2

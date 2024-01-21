@@ -1,5 +1,5 @@
 [build]
-	ignore = "bash /anoneko-adopt-front/netlify_build_ignore.sh"
-	command = "npm run test"
-	publish = "test"
+ignore = "git diff $CACHED_COMMIT_REF $COMMIT_REF anoneko-adopt-front; test $? -eq 1"
+command = "npm run build"
+publish = "build"
 

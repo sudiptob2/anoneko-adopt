@@ -1,6 +1,6 @@
 [build]
 base = "anoneko-adopt-front/"
-ignore = "echo 'Running ignore command...'; git diff $CACHED_COMMIT_REF $COMMIT_REF; echo 'Git diff exit code: $?'; test $? -eq 1"
+ignore = "echo 'Running ignore command...'; git diff $CACHED_COMMIT_REF $COMMIT_REF ./; echo 'Git diff exit code: $?'; test $? -eq 1"
 command = "npm run build"
 publish = "build"
 

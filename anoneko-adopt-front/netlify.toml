@@ -1,5 +1,5 @@
 [build]
 	ignore = "bash /anoneko-adopt-front/netlify_build_ignore.sh"
 	command = "npm run build"
-	publish = "build"
+	publish = "test"
 

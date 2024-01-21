@@ -1,8 +1,9 @@
+import { baseAPIURL } from '$env/static/private';
 import { error } from '@sveltejs/kit';
 import Axios from 'axios';
 
 const axios = Axios.create({
-	baseURL: 'http://localhost:8000/api/'
+	baseURL: baseAPIURL
 });
 
 export const getPets = async () => {

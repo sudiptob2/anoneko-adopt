@@ -17,5 +17,6 @@ spec:
       containers:
         - name: anoneko-adopt-api
           image: sudiptob2/anoneko-adopt:develop
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080

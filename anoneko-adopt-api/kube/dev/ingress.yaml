@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+    kubernetes.io/ingress.class: traefik
+  labels:
+    app: anoneko-adopt-api
+  name: anoneko-tls-ingress
+  namespace: default
+spec:
+  rules:
+    - host: "*.anoneko.sudiptobaral.com"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: anoneko-adopt-api
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - anoneko.sudiptobaral.com
+      secretName: anoneko.sudiptobaral.com-tls

@@ -1,6 +1,6 @@
 #!/bin/bash
 ls -l
-if git diff HEAD^ HEAD ./
+if git diff  --quiet HEAD^ HEAD ./
 then
   # No changes in anoneko-adopt-front, exit with 0 to skip build
   echo "No changes in anoneko-adopt-front, skipping build"

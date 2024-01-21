@@ -1,5 +1,5 @@
 #!/bin/bash
-ls -l
+
 if git diff  --quiet HEAD^ HEAD ./
 then
   # No changes in anoneko-adopt-front, exit with 0 to skip build

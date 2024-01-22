@@ -70,6 +70,8 @@ jobs:
           echo $image_tag_sha
           echo "image_tag=$image_tag_sha" >> $GITHUB_ENV
 
+      - name: Echo output
+        run: echo  ${{ steps.set-output.outputs.image-tag }}
     outputs:
       image-tag: ${{ steps.set-output.outputs.image-tag }}
 

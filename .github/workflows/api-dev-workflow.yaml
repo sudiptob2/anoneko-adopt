@@ -58,12 +58,12 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Print and debug digest
-        run: |
-          echo ${{ steps.build-and-push.outputs.digest }}
+      - name: Set output
+        id: set-output
+        run: echo "::set-output name=digest::$DOCKER_METADATA_OUTPUT_JSON"
 
     outputs:
-        digest: ${{ steps.build-and-push.outputs.digest }}
+        digest: ${{ steps.set-output.outputs.digest }}
 
 
   deploy:

@@ -9,14 +9,13 @@ on:
 env:
   IMAGE_NAME: ${{ github.repository }}
   REGISTRY: docker.io
-  IMAGE_TAG: ""
 
 jobs:
   build:
     runs-on: ubuntu-latest
     environment: DEV
     outputs:
-      image-tag: ${{ steps.set-output.outputs.image_tag }}
+      image_tag: ${{ steps.set-output.outputs.image_tag }}
     permissions:
       contents: read
       packages: write
@@ -73,7 +72,7 @@ jobs:
           echo "image_tag=hello" >> $GITHUB_OUTPUT
 
       - name: Echo output
-        run: echo  $IMAGE_TAG
+        run: echo  ${{ needs.build.outputs.image_tag }}
 
 
 

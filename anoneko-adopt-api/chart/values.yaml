@@ -3,7 +3,7 @@ replicaCount: 2
 image:
   repository: sudiptob2/anoneko-adopt
   pullPolicy: Always
-  tag: "develop"
+  tag: "main"
 
 service:
   type: ClusterIP
@@ -16,7 +16,7 @@ selector:
 ingress:
   name: anoneko-tls-ingress
   namespace: default
-  host: '"*.anoneko.sudiptobaral.com"'
+  host: '"dev.anoneko.sudiptobaral.com"'
   tlsHost: anoneko.sudiptobaral.com
   secretName: anoneko.sudiptobaral.com-tls
   annotations:

@@ -60,7 +60,7 @@ jobs:
 
       - name: Set output
         id: set-output
-        run: echo "image-tag=$DOCKER_METADATA_OUTPUT_JSON >> $GITHUB_OUTPUT
+        run: echo "image-tag=${{ steps.meta.outputs.tags[0] }} >> $GITHUB_OUTPUT
 
     outputs:
       image-tag: ${{ steps.set-output.outputs.image-tag }}
@@ -80,7 +80,7 @@ jobs:
           echo "-------------------"
           echo ${{ needs.build.steps.build-and-push.outputs.digest }}
           echo "-------------------"
-          echo ${{ needs.build.outputs.image-tags }}
+          echo ${{ needs.build.outputs.image-tag }}
 
       - name: Update tag in values.yaml
         uses: mikefarah/yq@v4.12.2

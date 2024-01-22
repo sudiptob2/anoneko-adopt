@@ -69,7 +69,7 @@ jobs:
           image_tag=$(echo "$DOCKER_METADATA" | jq -r '.tags[] | select(. | test("main-"))')
           image_tag_sha=$(echo "$image_tag" | grep -o 'main-[a-f0-9]\+')
           echo $image_tag_sha
-          echo "image_tag=hello" >> $GITHUB_OUTPUT
+          echo "image_tag=$image_tag_sha" >> $GITHUB_OUTPUT
 
       - name: Echo output
         run: echo  ${{ needs.build.outputs.image_tag }}

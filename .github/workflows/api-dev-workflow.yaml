@@ -2,7 +2,7 @@ name: API dev
 
 on:
   push:
-    branches: [ "develop" ]
+    branches: [ "main" ]
     paths:
       - 'anoneko-adopt-api/**'
 

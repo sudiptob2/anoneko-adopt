@@ -2,9 +2,9 @@ name: API dev
 
 on:
   push:
-    branches: [ "main" ]
-    paths:
-      - 'anoneko-adopt-api/**'
+#    branches: [ "main" ]
+#    paths:
+#      - 'anoneko-adopt-api/**'
 
 env:
   IMAGE_NAME: ${{ github.repository }}
@@ -64,6 +64,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Print and debug digest
+        run: |
+          echo ${{ steps.build-and-push.outputs.digest }}
       - name: Update tag in values.yaml
         uses: mikefarah/yq@v4.12.2
         with:

@@ -9,6 +9,7 @@ on:
 env:
   IMAGE_NAME: ${{ github.repository }}
   REGISTRY: docker.io
+  DOCKER_METADATA: ""
 
 jobs:
   build:
@@ -60,7 +61,13 @@ jobs:
 
       - name: Set output
         id: set-output
-        run: echo "image-tag=${{ steps.meta.outputs.tags[0] }} >> $GITHUB_OUTPUT
+        env:
+          DOCKER_METADATA: ${{ steps.meta.outputs.json }}
+        run: |
+          echo $DOCKER_METADATA | jq '.'
+          image_tag=$(echo "$DOCKER_METADATA" | jq -r '.tags[] | select(. | test("main-"))')
+          echo $image_tag
+          echo "image_tag=$image_tag" >> $GITHUB_ENV
 
     outputs:
       image-tag: ${{ steps.set-output.outputs.image-tag }}

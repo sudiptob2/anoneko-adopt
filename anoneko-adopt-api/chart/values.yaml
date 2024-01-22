@@ -16,8 +16,8 @@ selector:
 ingress:
   name: anoneko-tls-ingress
   host: '"dev.anoneko.sudiptobaral.com"'
-  tlsHost: anoneko.sudiptobaral.com
-  secretName: anoneko.sudiptobaral.com-tls
+  tlsHost: dev.anoneko.sudiptobaral.com
+  secretName:  new-dev-tls
   annotations:
     clusterIssuer: letsencrypt-production
     ingressClass: traefik

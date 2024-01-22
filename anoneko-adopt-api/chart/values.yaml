@@ -19,5 +19,5 @@ ingress:
   tlsHost: anoneko.sudiptobaral.com
   secretName: anoneko-api-tls
   annotations:
-    clusterIssuer: letsencrypt-production
+    clusterIssuer: letsencrypt-staging
     ingressClass: traefik

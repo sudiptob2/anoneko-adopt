@@ -68,7 +68,7 @@ jobs:
           image_tag=$(echo "$DOCKER_METADATA" | jq -r '.tags[] | select(. | test("main-"))')
           image_tag_sha=$(echo "$image_tag" | grep -o 'main-[a-f0-9]\+')
           echo $image_tag_sha
-          echo "image_tag=$image_tag" >> $GITHUB_ENV
+          echo "image_tag=$image_tag_sha" >> $GITHUB_ENV
 
     outputs:
       image-tag: ${{ steps.set-output.outputs.image-tag }}
@@ -82,18 +82,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Print and debug digest-deploy
+      - name: Print New Image tag
         run: |
-          echo ${{ steps.build-and-push.outputs.digest }}
-          echo "-------------------"
-          echo ${{ needs.build.steps.build-and-push.outputs.digest }}
-          echo "-------------------"
           echo ${{ needs.build.outputs.image-tag }}
 
       - name: Update tag in values.yaml
         uses: mikefarah/yq@v4.12.2
         with:
-          cmd: yq eval '.image.tag = "${{ steps.build-and-push.outputs.digest }}"' -i anoneko-adopt-api/chart/values.yaml
+          cmd: yq eval '.image.tag = "${{ needs.build.outputs.image-tag }}"' -i anoneko-adopt-api/chart/values.yaml
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3

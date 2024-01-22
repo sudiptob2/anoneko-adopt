@@ -61,6 +61,11 @@ jobs:
       - name: Print and debug digest
         run: |
           echo ${{ steps.build-and-push.outputs.digest }}
+
+    outputs:
+        digest: ${{ steps.build-and-push.outputs.digest }}
+
+
   deploy:
     needs: build
     runs-on: ubuntu-latest

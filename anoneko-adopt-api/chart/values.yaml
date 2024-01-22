@@ -15,7 +15,6 @@ selector:
 
 ingress:
   name: anoneko-tls-ingress
-  namespace: default
   host: '"dev.anoneko.sudiptobaral.com"'
   tlsHost: anoneko.sudiptobaral.com
   secretName: anoneko.sudiptobaral.com-tls

@@ -12,6 +12,8 @@ RUN mkdir /app
 COPY . /app
 WORKDIR /app
 
+RUN cp .env.example .env
+
 RUN go build -o bin/api
 
 EXPOSE $PORT

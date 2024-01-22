@@ -3,8 +3,8 @@ name: API dev
 on:
   push:
     branches: [ "main" ]
-#    paths:
-#      - 'anoneko-adopt-api/**'
+    paths:
+      - 'anoneko-adopt-api/**'
 
 env:
   IMAGE_NAME: ${{ github.repository }}
@@ -68,13 +68,7 @@ jobs:
           echo $DOCKER_METADATA | jq '.'
           image_tag=$(echo "$DOCKER_METADATA" | jq -r '.tags[] | select(. | test("main-"))')
           image_tag_sha=$(echo "$image_tag" | grep -o 'main-[a-f0-9]\+')
-          echo $image_tag_sha
           echo "image_tag=$image_tag_sha" >> $GITHUB_OUTPUT
-
-      - name: Echo output
-        run: echo  ${{ needs.build.outputs.image_tag }}
-
-
 
   deploy:
     needs: build
@@ -98,8 +92,8 @@ jobs:
           committer: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: true
-          title: "Update image tag in values.yaml for ArgoCD deployment"
-          body: "This PR updates the image tag in `values.yaml`."
+          title: "Update Docker image in values.yaml for ArgoCD"
+          body: "This PR updates the image tag in `values.yaml`. Merge this PR to deploy the new image."
           branch: helm/update-docker-image-tag
           delete-branch: true
           base: main

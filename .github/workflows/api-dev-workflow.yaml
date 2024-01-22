@@ -58,9 +58,12 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
+      - name: print output
+        run: echo ${{ steps.meta.outputs.tags }}
+
       - name: Set output
         id: set-output
-        run: echo "::set-output name=image-tags::${{ steps.meta.outputs.tags }}"
+        run: echo "image-tags=${{ steps.meta.outputs.tags }}" >> $GITHUB_OUTPUT
 
     outputs:
       image-tags: ${{ steps.meta.outputs.tags }}

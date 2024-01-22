@@ -58,12 +58,9 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Set output
-        id: set-output
-        run: echo "::set-output name=digest::$DOCKER_METADATA_OUTPUT_JSON"
-
     outputs:
-        digest: ${{ steps.set-output.outputs.digest }}
+      image-tags: ${{ steps.meta.outputs.tags }}
+
 
 
   deploy:
@@ -79,7 +76,7 @@ jobs:
           echo "-------------------"
           echo ${{ needs.build.steps.build-and-push.outputs.digest }}
           echo "-------------------"
-          echo ${{ needs.build.outputs.digest }}
+          echo ${{ needs.build.outputs.image-tags }}
 
       - name: Update tag in values.yaml
         uses: mikefarah/yq@v4.12.2

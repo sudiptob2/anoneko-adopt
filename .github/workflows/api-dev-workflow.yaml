@@ -60,7 +60,7 @@ jobs:
 
       - name: Set output
         id: set-output
-        run: echo "image-tag=${{ steps.meta.outputs.tags[1] }}" >> $GITHUB_OUTPUT
+        run: echo "image-tag=$DOCKER_METADATA_OUTPUT_JSON >> $GITHUB_OUTPUT
 
     outputs:
       image-tag: ${{ steps.set-output.outputs.image-tag }}

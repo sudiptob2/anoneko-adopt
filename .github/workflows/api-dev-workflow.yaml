@@ -71,6 +71,10 @@ jobs:
       - name: Print and debug digest-deploy
         run: |
           echo ${{ steps.build-and-push.outputs.digest }}
+          echo "-------------------"
+          echo ${{ needs.build.steps.build-and-push.outputs.digest }}
+          echo "-------------------"
+          echo ${{ needs.build.outputs.digest }}
 
       - name: Update tag in values.yaml
         uses: mikefarah/yq@v4.12.2
@@ -86,4 +90,5 @@ jobs:
           title: "Update image tag in values.yaml for ArgoCD deployment"
           body: "This PR updates the image tag in `values.yaml`."
           branch: helm/update-docker-image-tag
+          delete-branch: true
           base: main

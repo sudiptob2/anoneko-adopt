@@ -90,3 +90,4 @@ jobs:
           title: "Update image tag in values.yaml for ArgoCD deployment"
           body: "This PR updates the image tag in `values.yaml`."
           branch: update-values-${{ github.run_id }}
+          base: main

@@ -9,7 +9,7 @@ on:
 env:
   IMAGE_NAME: ${{ github.repository }}
   REGISTRY: docker.io
-  DOCKER_METADATA: ""
+  IMAGE_TAG: ""
 
 jobs:
   build:
@@ -69,9 +69,10 @@ jobs:
           image_tag_sha=$(echo "$image_tag" | grep -o 'main-[a-f0-9]\+')
           echo $image_tag_sha
           echo "image_tag=$image_tag_sha" >> $env:GITHUB_OUTPUT
+          echo "IMAGE_TAG=$image_tag_sha" >> $GITHUB_ENV
 
       - name: Echo output
-        run: echo  ${{ steps.set-output.outputs.image-tag }}
+        run: echo  $IMAGE_TAG
     outputs:
       image-tag: ${{ steps.set-output.outputs.image-tag }}
 
@@ -91,7 +92,7 @@ jobs:
       - name: Update tag in values.yaml
         uses: mikefarah/yq@v4.12.2
         with:
-          cmd: yq eval '.image.tag = "${{ needs.build.outputs.image-tag }}"' -i anoneko-adopt-api/chart/values.yaml
+          cmd: yq eval '.image.tag = "$IMAGE_TAG"' -i anoneko-adopt-api/chart/values.yaml
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3

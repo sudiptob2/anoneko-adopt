@@ -1,23 +1,19 @@
 replicaCount: 2
-
 image:
   repository: sudiptob2/anoneko-adopt
   pullPolicy: Always
-  tag: "main"
-
+  tag: "main-ee7f8f9"
 service:
   type: ClusterIP
   port: 80
   targetPort: 8080
-
 selector:
   app: anoneko-adopt-api
-
 ingress:
   name: anoneko-tls-ingress
   host: '"dev.anoneko.sudiptobaral.com"'
   tlsHost: dev.anoneko.sudiptobaral.com
-  secretName:  new-dev-tls
+  secretName: new-dev-tls
   annotations:
     clusterIssuer: letsencrypt-production
     ingressClass: traefik

@@ -7,7 +7,6 @@ metadata:
   labels:
     app: {{ .Values.selector.app }}
   name: {{ .Values.ingress.name }}
-  namespace: {{ .Values.ingress.namespace }}
 spec:
   rules:
     - host: {{ .Values.ingress.host }}

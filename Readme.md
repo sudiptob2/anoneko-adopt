@@ -1,2 +1,4 @@
 ## Current Tech Stack
-![anoneko-tech-stack.png](assets%2Fanoneko-tech-stack.png)
+<p align="center">
+  <img src="assets/anoneko-tech-stack.png" alt="anoneko-tech-stack">
+</p>

@@ -2,7 +2,7 @@ replicaCount: 2
 image:
   repository: sudiptob2/anoneko-adopt
   pullPolicy: Always
-  tag: "main-ee7f8f9"
+  tag: "main-4484533"
 service:
   type: ClusterIP
   port: 80
